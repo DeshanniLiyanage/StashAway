@@ -1,0 +1,29 @@
+{
+  "plans" : [ {
+    "portId" : "P01",
+    "portName" : "High risk",
+    "portDesc" : "High risk description",
+    "deposits" : [ {
+      "depId" : "D01",
+      "depName" : "One time",
+      "depAmount" : 1000.0
+    }, {
+      "depId" : "D02",
+      "depName" : "Monthly",
+      "depAmount" : 0.0
+    } ]
+  }, {
+    "portId" : "P02",
+    "portName" : "Retirement",
+    "portDesc" : "Retirement description",
+    "deposits" : [ {
+      "depId" : "D01",
+      "depName" : "One time",
+      "depAmount" : 500.0
+    }, {
+      "depId" : "D02",
+      "depName" : "Monthly",
+      "depAmount" : 100.0
+    } ]
+  } ]
+}
