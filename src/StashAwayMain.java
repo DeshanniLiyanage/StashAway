@@ -9,7 +9,7 @@ import java.util.List;
 
 public class StashAwayMain {
 
-    public static void main(String args[]){
+    public static void main(String[] args){
         /*create the data structure*/
         DataStructure dataStructure = retrieveDepositPlanDetails();
         DataStructureView dataStructureView = new DataStructureView();
@@ -33,8 +33,8 @@ public class StashAwayMain {
         DataStructure.Portfolio p;
         DataStructure.Portfolio.DepositsCriterias dc;
 
-        plans = new ArrayList<DataStructure.Portfolio>();
-        deposits = new ArrayList<DataStructure.Portfolio.DepositsCriterias>();
+        plans = new ArrayList<>();
+        deposits = new ArrayList<>();
 
         p = new DataStructure.Portfolio();
         p.setPortId("P01");
@@ -56,7 +56,7 @@ public class StashAwayMain {
         p.setDeposits(deposits);
         plans.add(p);
 
-        deposits = new ArrayList<DataStructure.Portfolio.DepositsCriterias>();
+        deposits = new ArrayList<>();
 
         p = new DataStructure.Portfolio();
         p.setPortId("P02");

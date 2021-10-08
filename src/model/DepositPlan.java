@@ -36,9 +36,7 @@ public class DepositPlan {
         }
 
         /*monthly plans has been prioritized to first choice*/
-        Iterator mIterator = monthly.entrySet().iterator();
-        while (mIterator.hasNext()) {
-            Map.Entry mapElement = (Map.Entry)mIterator.next();
+        for (Map.Entry mapElement : monthly.entrySet()) {
             DataStructure.Portfolio.DepositsCriterias value = (DataStructure.Portfolio.DepositsCriterias) mapElement.getValue();
             if(value.getDepAmount() <= amount )
                 System.out.println("dd");
