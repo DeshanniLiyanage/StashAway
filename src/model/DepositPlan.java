@@ -20,10 +20,6 @@ public class DepositPlan {
         fundDeviation();
     }
 
-    public DepositPlan() {
-
-    }
-
     public void fundDeviation(){
         HandleDataFile handleJSONFile = new HandleDataFile();
 
@@ -61,12 +57,12 @@ public class DepositPlan {
     private long findDepositPlans(HashMap<String, Long> allocatedPlans, HashMap<String, DataStructure.Portfolio.DepositsCriterias> monthly, long remainingAmount) {
         for (Map.Entry<String, DataStructure.Portfolio.DepositsCriterias> mElement : monthly.entrySet()) {
             DataStructure.Portfolio.DepositsCriterias mValue = mElement.getValue();
-            if(mValue.getDepAmount() <= remainingAmount ){
+            if(mValue.getDepAmount() <= remainingAmount ){ /*check - remaining balance is enough to complete a deposit*/
                 long deposit;
-                if(allocatedPlans.containsKey(mElement.getKey())) {
+                if(allocatedPlans.containsKey(mElement.getKey())) { /*when in same portfolio*/
                     deposit = allocatedPlans.get(mElement.getKey()) + (long) mValue.getDepAmount();
                     allocatedPlans.put(mElement.getKey(),deposit);
-                }else {
+                }else { /*when in different portfolios*/
                     allocatedPlans.put(mElement.getKey(), (long) mValue.getDepAmount());
                 }
                 remainingAmount = (long) (remainingAmount - mValue.getDepAmount());

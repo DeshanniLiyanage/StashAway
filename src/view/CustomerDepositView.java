@@ -63,10 +63,12 @@ public class CustomerDepositView {
                 System.out.println(portfolio + " : " + depAmount);
             }
 
-        if(safeDepAmount > 0) {
+        System.out.println("Your deposit has been arranged successfully.\n");
+
+        if(safeDepAmount > 0) {/* when excess balance is there*/
             System.out.println("Your have " + safeDepAmount + "(SGD) balance.");
             System.out.println("We'll be happily safe keeping it until your next transfer");
-            System.out.println("  Please contact us for a revision");
+            System.out.println("     Message : Please contact us for a revision");
         }
     }
 
