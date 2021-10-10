@@ -9,11 +9,11 @@ public class DepositPlan {
     private DataStructure dataStructure;
 
     private String refId;
-    private long amount;
-    private long safetyDepositAmount;
-    private HashMap<String, Long> allocatedPlans;
+    private float amount;
+    private float safetyDepositAmount;
+    private HashMap<String, Float> allocatedPlans;
 
-    public DepositPlan(String refId, long amount) {
+    public DepositPlan(String refId, float amount) {
         this.refId = refId;
         this.amount = amount;
 
@@ -23,7 +23,7 @@ public class DepositPlan {
     public void fundDeviation(){
         HandleDataFile handleJSONFile = new HandleDataFile();
 
-        long tempDepositAmount = amount;
+        float tempDepositAmount = amount;
 
         dataStructure = handleJSONFile.retrieve();
         allocatedPlans = new HashMap<>();
@@ -54,18 +54,18 @@ public class DepositPlan {
 
     }
 
-    private long findDepositPlans(HashMap<String, Long> allocatedPlans, HashMap<String, DataStructure.Portfolio.DepositsCriterias> monthly, long remainingAmount) {
+    private float findDepositPlans(HashMap<String, Float> allocatedPlans, HashMap<String, DataStructure.Portfolio.DepositsCriterias> monthly, float remainingAmount) {
         for (Map.Entry<String, DataStructure.Portfolio.DepositsCriterias> mElement : monthly.entrySet()) {
             DataStructure.Portfolio.DepositsCriterias mValue = mElement.getValue();
             if(mValue.getDepAmount() <= remainingAmount ){ /*check - remaining balance is enough to complete a deposit*/
-                long deposit;
+                float deposit;
                 if(allocatedPlans.containsKey(mElement.getKey())) { /*when in same portfolio*/
-                    deposit = allocatedPlans.get(mElement.getKey()) + (long) mValue.getDepAmount();
+                    deposit = allocatedPlans.get(mElement.getKey()) + (float) mValue.getDepAmount();
                     allocatedPlans.put(mElement.getKey(),deposit);
                 }else { /*when in different portfolios*/
-                    allocatedPlans.put(mElement.getKey(), (long) mValue.getDepAmount());
+                    allocatedPlans.put(mElement.getKey(), (float) mValue.getDepAmount());
                 }
-                remainingAmount = (long) (remainingAmount - mValue.getDepAmount());
+                remainingAmount = (float) (remainingAmount - mValue.getDepAmount());
             }
         }
         this.allocatedPlans = allocatedPlans;
@@ -81,27 +81,27 @@ public class DepositPlan {
         this.refId = refId;
     }
 
-    public long getAmount() {
+    public float getAmount() {
         return amount;
     }
 
-    public void setAmount(long amount) {
+    public void setAmount(float amount) {
         this.amount = amount;
     }
 
-    public long getSafetyDepositAmount() {
+    public float getSafetyDepositAmount() {
         return safetyDepositAmount;
     }
 
-    public void setSafetyDepositAmount(long safetyDepositAmount) {
+    public void setSafetyDepositAmount(float safetyDepositAmount) {
         this.safetyDepositAmount = safetyDepositAmount;
     }
 
-    public HashMap<String, Long> getAllocatedPlans() {
+    public HashMap<String, Float> getAllocatedPlans() {
         return allocatedPlans;
     }
 
-    public void setAllocatedPlans(HashMap<String, Long> allocatedPlans) {
+    public void setAllocatedPlans(HashMap<String, Float> allocatedPlans) {
         this.allocatedPlans = allocatedPlans;
     }
 
