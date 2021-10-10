@@ -2,14 +2,12 @@ package model;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class HandleJSONFile {
+public class HandleDataFile {
     final String FILE_NAME = "dataStructure.json";
     DataStructure dataStructure;
 
@@ -17,7 +15,7 @@ public class HandleJSONFile {
         ObjectMapper mapper = new ObjectMapper();
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
 
-        String json = null;
+        String json;
         FileWriter writer;
         BufferedWriter bw;
         try {

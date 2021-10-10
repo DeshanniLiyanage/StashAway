@@ -1,11 +1,11 @@
 package controller;
 
-import model.HandleJSONFile;
+import model.HandleDataFile;
 import model.DataStructure;
 import view.DataStructureView;
 
 public class DataStructureController {
-    private HandleJSONFile handleJSONFile = new HandleJSONFile();
+    private HandleDataFile handleDataFile = new HandleDataFile();
 
     private DataStructure dataStructure;
     private DataStructureView dataStructureView;
@@ -16,7 +16,7 @@ public class DataStructureController {
     }
 
     public void OnCreateStructure(){
-        handleJSONFile.create(dataStructure);
+        handleDataFile.create(dataStructure);
         dataStructureView.viewDataStructure();
     }
 }

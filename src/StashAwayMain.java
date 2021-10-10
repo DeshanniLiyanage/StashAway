@@ -1,6 +1,7 @@
 import controller.DataStructureController;
 import controller.DepositPlanController;
 import model.DataStructure;
+import model.DepositPlan;
 import view.CustomerDepositView;
 import view.DataStructureView;
 
